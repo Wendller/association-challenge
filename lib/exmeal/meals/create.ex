@@ -10,7 +10,7 @@ defmodule Exmeal.Meals.Create do
     |> handle_insert()
   end
 
-  defp handle_insert({:error, result} = result) do
+  defp handle_insert({:error, result}) do
     {:error, Error.build(:bad_request, result)}
   end
 

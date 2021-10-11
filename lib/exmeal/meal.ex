@@ -25,6 +25,6 @@ defmodule Exmeal.Meal do
     meal
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_number(:calories, min: 0)
+    |> validate_number(:calories, greater_than_or_equal_to: 0)
   end
 end
