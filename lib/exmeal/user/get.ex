@@ -1,6 +1,12 @@
 defmodule Exmeal.Users.Get do
+  alias Exmeal.Error
+  alias Exmeal.Repo
+  alias Exmeal.User
 
   def by_id(id) do
-    # TO DO
+    case Repo.get(User, id) do
+      nil -> {:error, Error.build_user_not_found_error()}
+      user -> {:ok, user}
+    end
   end
 end

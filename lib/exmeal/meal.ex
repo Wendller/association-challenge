@@ -1,6 +1,8 @@
 defmodule Exmeal.Meal do
   use Ecto.Schema
 
+  alias Exmeal.User
+
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -10,10 +12,19 @@ defmodule Exmeal.Meal do
   @derive {Jason.Encoder, only: @required_params ++ [:id]}
 
   schema "meals" do
-    # TO DO
+    field(:description, :string)
+    field(:date, :date)
+    field(:calories, :integer)
+
+    belongs_to :user, User
+
+    timestamps()
   end
 
-  def changeset() do
-    # TO DO
+  def changeset(meal \\ %__MODULE__{}, params) do
+    meal
+    |> cast(params, @required_params)
+    |> validate_required(@required_params)
+    |> validate_number(:calories, min: 0)
   end
 end

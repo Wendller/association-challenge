@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :exmeal, Exmeal.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "wendler",
+  password: "0814",
   database: "exmeal_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
